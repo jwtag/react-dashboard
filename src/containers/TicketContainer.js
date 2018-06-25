@@ -6,6 +6,8 @@ import okay from '../okay.png';
 import bad from '../bad.png';
 import placeholder_image from '../placeholder_image.jpg';
 import { NavLink } from 'react-router-dom';
+import List from '../components/List';
+
 
 export class TicketContainer extends React.Component
 {
@@ -17,6 +19,7 @@ export class TicketContainer extends React.Component
 	placeholder_description = "banana banana apple banana";
 	placeholder_count = 5280;
 	placeholder_complaints = {};
+	placeholder_items = ["Perturbed User 1", "Perturbed User 2", "Perturbed User 3"];
 
 
 	constructor(props)
@@ -31,28 +34,28 @@ export class TicketContainer extends React.Component
 			<div>
 				<h2>Ticket Number: {this.placeholder_ticket_number}</h2>
 				<img src={placeholder_image} height="auto" width="500"/>
-				<div class="user">
-					<span>Date Posted:</span>
+				<div className="user">
+					<span>User: </span>
 					{this.placeholder_user}
 				</div>
-				<div class="date-posted">
-					<span>Date Posted:</span>
+				<div className="date-posted">
+					<span>Date Posted: </span>
 					{this.placeholder_date}
 				</div>
-				<div class="num-complaints">
-					<span>Date Posted:</span>
-					{this.placeholder_count}
+				<div className="num-complaints">
+					<span>Number of Complaints: </span>
+					{this.placeholder_count + "\n"}
 				</div>
-				<div class="desc">
-					<span>Date Posted:</span>
+				<div className="desc">
+					<span>Description: </span>
 					{this.placeholder_description}
 				</div>
-				<div class="complaints">
+				<div className="complaints">
 					<span>Complaints (by user): </span>
-					{/*LIST STUFF*/}
+					<List items={this.placeholder_items} onClickItem={JSON.stringify} ListItem={JSON.stringify}/>
 				</div>
-				<button class="Okay"><img src={okay} height="50" width="auto"/></button>
-				<button class="Bad"><img src={bad} height="50" width="auto"/></button>
+				<button className="Okay"><img src={okay} height="50" width="auto"/></button>
+				<button className="Bad"><img src={bad} height="50" width="auto"/></button>
 				<NavLink to="/Tickets/SampleTicket" activeClassName="selected">Previous</NavLink>
 				<NavLink to="/Tickets/SampleTicket" activeClassName="selected">Next</NavLink>
 			</div>

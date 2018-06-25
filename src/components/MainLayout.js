@@ -22,6 +22,7 @@ export default class MainLayout extends React.Component
 					<Switch>
 						<Route path="/main" component={MainMenuContainer} />
 						<Route path="/Tickets/SampleTicket" component={TicketContainer}/>
+						<Redirect to="/main"/>
 					</Switch>
 				</div>
 

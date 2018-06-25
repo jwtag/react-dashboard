@@ -10,7 +10,7 @@ export default class Sidebar extends React.Component
 			<div className="sidebar">
 				<nav className="img-container">
 					<NavLink to="/main" activeClassName="selected">
-						<img src = {logo}/>
+						<img src = {logo} width="auto" height="auto"/>
 					</NavLink>
 				</nav>
 				<nav className="sidebar-nav">
