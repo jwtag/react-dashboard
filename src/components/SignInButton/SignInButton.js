@@ -1,10 +1,11 @@
+//Login dialogue to get token.
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Container from '../containers/Container';
-import Types from '../redux/sampleRedux';
+import Types from './AccessTokenRedux';
 
-export class SampleContainer extends React.Component
+export class SignInDialogue extends React.Component
 {
 	static propTypes = {};
 
@@ -16,12 +17,12 @@ export class SampleContainer extends React.Component
 
 	render()
 	{
-		function triggerSample() { console.log(JSON.stringify(this.props.state))};
+		const {triggerSample} = this.props;
 		const {property} = this.state;
 		return (
 			<div>
 				<h2>Sample Container</h2>
-				<button className="sample" onClick={triggerSample} h2="asfdasdf"/>
+				<button className="sample" onClick={triggerSample}/>
 			</div>
 		);
 	}

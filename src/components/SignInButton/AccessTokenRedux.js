@@ -5,15 +5,14 @@ import Immutable from 'seamless-immutable';
 
 const { Types, Creators } = createActions(
 	{
-		sample: ['property'],
-		setProperty: ['property']
+		accessToken: ['property'],
 	},
 	{
-		prefix: 'SAMPLE/'
+		prefix: 'LOGIN/'
 	}
 );
 
-export const sampleTypes = Types;
+export const accessTokenTypes = Types;
 export default Creators;
 
 /* ------------- Initial State ------------- */
@@ -23,11 +22,11 @@ export const INITIAL_STATE = Immutable({
 });
 
 /* ------------- Reducers ------------- */
-export const setProperty = (state, {property}) => state.merge({property})
+export const accessToken = (state, {accessToken}) => state.merge({accessToken});
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-	[Types.SET_PROPERTY]: setProperty
+	[Types.ACCESS_TOKEN]: accessToken
 });
 
