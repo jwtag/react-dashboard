@@ -16,12 +16,12 @@ export class SampleContainer extends React.Component
 
 	render()
 	{
-		function triggerSample() { console.log(JSON.stringify(this.props.state))};
+		const {triggerSample} = this.props;
 		const {property} = this.state;
 		return (
 			<div>
 				<h2>Sample Container</h2>
-				<button className="sample" onClick={triggerSample} h2="asfdasdf"/>
+				<button className="sample" onClick={triggerSample}/>
 			</div>
 		);
 	}

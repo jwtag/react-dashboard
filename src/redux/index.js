@@ -4,5 +4,5 @@ import { combineReducers } from 'redux';
 export default combineReducers({
 	nav: require('./navRedux').reducer,
 	api: require('./apiRedux').reducer,
-	sample: require('./sampleRedux').reducer
+	token: require('./AccessTokenRedux').reducer
 });
