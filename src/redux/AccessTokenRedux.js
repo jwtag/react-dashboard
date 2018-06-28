@@ -5,11 +5,13 @@ import Immutable from 'seamless-immutable';
 
 const { Types, Creators } = createActions(
 	{
-		accessToken: ['property'],
+        createAccessToken: ['providerToken'],
+        accessTokenCreated: ['accessToken', 'expiresIn'],
+        accessTokenCreationFailed: ['failureMessage']
 	},
 	{
-		prefix: 'LOGIN/'
-	}
+		prefix: 'ACCESS_TOKEN/'
+    }
 );
 
 export const accessTokenTypes = Types;
@@ -18,15 +20,19 @@ export default Creators;
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-	property: null
+    accessToken: null,
+    expirationDate: null,
+    accessTokenCreationFailed: "Token Creation Failed. :("
 });
 
 /* ------------- Reducers ------------- */
-export const accessToken = (state, {accessToken}) => state.merge({accessToken});
+export const onAccessTokenCreated = (state, {accessToken, expiresIn}) => {
+    return state.merge({accessToken, expirationDate: new Date().getTime() + (expiresIn * 1000)});
+};
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-	[Types.ACCESS_TOKEN]: accessToken
+	[Types.ACCESS_TOKEN_CREATED]: onAccessTokenCreated
 });
 

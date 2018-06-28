@@ -5,9 +5,8 @@ import login from '../sagas/AccessTokenSagas';
 import AccessTokenActions from '../redux/AccessTokenRedux';
 import api from '../utilities/api';
 import { connect } from 'react-redux';
-import { AccessTokenSignIn } from './AccessTokenSignIn';
 
-export class Sidebar extends React.Component
+export class AccessTokenSignIn extends React.Component
 {
 
 	onSignInClick() {
@@ -19,17 +18,9 @@ export class Sidebar extends React.Component
 	render()
 	{
 		return (
-			<div className="sidebar">
-				<nav className="img-container">
-					<AccessTokenSignIn />
-				</nav>
-				<nav className="sidebar-nav">
-					<NavLink to="/main" activeClassName="selected">Ticketed Posts </NavLink>
-					<NavLink to="/main" activeClassName="selected">Removed Posts</NavLink>
-					<NavLink to="/main" activeClassName="selected">Banned Users</NavLink>
-					<NavLink to="/Tickets/SidebarTicket" activeClassName="selected">Test Ticket</NavLink>
-				</nav>
-			</div>
+            <button className="signin" onClick={this.onSignInClick.bind(this)}>
+                    <img src = {logo} width="200" height="auto"/>
+            </button>
 		);
 	}
 }
@@ -46,4 +37,4 @@ const mapDispatchToProps = (dispatch, ownProps) =>
 	};
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Sidebar)
+export default connect(mapStateToProps,mapDispatchToProps)(AccessTokenSignIn)

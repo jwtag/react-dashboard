@@ -1,0 +1,1506 @@
+{
+	"info": {
+		"name": "GS",
+		"_postman_id": "b3f6aecf-2c68-42c6-e37e-cc70b0abebd4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registry",
+			"description": "",
+			"item": [
+				{
+					"name": "Feed",
+					"description": "",
+					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Create Simple Registry",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gs_host}}/me/registries",
+							"protocol": "https",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"registries"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Simple Registry",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"this is a title\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gs_host}}/me/registries/{{last_registry_ts}}",
+							"protocol": "https",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"registries",
+								"{{last_registry_ts}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Simple Registry",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"this is a title\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gs_host}}/me/registries/{{last_registry_ts}}",
+							"protocol": "https",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"registries",
+								"{{last_registry_ts}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Registries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me/registries",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"registries"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Registry",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t    \"items\": [\n        {\n            \"seq\": 2,\n            \"description\": \"item 2\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n            \"seq\": 3,\n            \"description\": \"item 3\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n            \"seq\": 1,\n            \"description\": \"this is an item\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n        \t\"seq\": 4,\n            \"description\": \"this is an item 4\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{gs_host}}/me/registries/{{last_registry_ts}}",
+							"protocol": "https",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"registries",
+								"{{last_registry_ts}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Log In",
+			"description": "",
+			"item": [
+				{
+					"name": "Sign In",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b0f7e735-07b6-40e4-b3eb-5cb1dc16e8c1",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"gs_token\", \"Bearer \" + JSON.parse(responseBody).accessToken);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJkZXYuYXBpLnJlZ2l2LmNvbSIsImV4cCI6MTUyODE0Nzk3NiwiaWF0IjoxNTI4MDYzMzc2LCJpc3MiOiJkZXYuYXBpLnJlZ2l2LmNvbSIsImp0aSI6IjE0NTg5MTEzZjg1NjQyY2JhMzg2YWI0MmE2NTQ4OTNkIiwicm9sIjpbXSwic3ViIjoiZTYxOGQ1ZWNlM2YzNGY3MjhlMDdhOWE4ZWE0MTJhZjUifQ.16mZDePgpLkbCaTrvgJ-jgpq_0OQzyuXw_CKhbeJM_c"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"provider\":\"facebook\",\n  \"token\": \"EAAG9CZCsUYBMBAE2mQ9BdIfJZB3IqHYk6Pnx074CMr6eEiD021tXqnEYwprilw7GxrLISIYArZCPtFjJa3R39apYm7DCwEttZAxNM3u8IpWM5sMPCUdQILPUFcJT2yghUeoYJExRzAErsxvInzTY8bZB74MukJBGHKZAMas8A3Gd4cEJdSkHwQdgtgmKmA84AZD\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/signin",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"signin"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b0f7e735-07b6-40e4-b3eb-5cb1dc16e8c1",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"gs_token\", \"Bearer \" + JSON.parse(responseBody).accessToken);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"provider\":\"facebook\",\n  \"token\": \"EAALFS7pZCZA80BAOEMDGOuZAnJcQGpIE5bJ2ZA4DuTWhuUIskErOrmlqpTDQJg1BhZB4jFYg4RKc96hiMKxUqZAlbHG6YbjOz2FZAmJ9pleSE9j31vNNHlQYadFDwIayba36bQmCulDrZBUgdqs4OXvcJkM5nIVpv6YZAnIBBIHgKyZB7OGopkfsWKnBcAbdxzYJ0ZD\",\n  \"firstName\":\"Dave\",\n  \"lastName\":\"Turner\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/signup",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"signup"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Follow",
+			"description": "",
+			"item": [
+				{
+					"name": "Get My Followers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me/followers",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"followers"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Following",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gs_host}}/me/following",
+							"protocol": "https",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"following"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Exchanges",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me/exchanges",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"exchanges"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Followers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/users/9e6d1179fe7f418eb0b9c4ceaf031d82/followers",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"users",
+								"9e6d1179fe7f418eb0b9c4ceaf031d82",
+								"followers"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Following",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/users/9e6d1179fe7f418eb0b9c4ceaf031d82/following",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"users",
+								"9e6d1179fe7f418eb0b9c4ceaf031d82",
+								"following"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Following Offers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me/following/9e6d1179fe7f418eb0b9c4ceaf031d82/offers",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"following",
+								"9e6d1179fe7f418eb0b9c4ceaf031d82",
+								"offers"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Follow Requests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\":\"this is text\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me/followrequests",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"followrequests"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Follower",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me/followers/3e00d32ef3b0446fa1b055d5a55ba452",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"followers",
+								"3e00d32ef3b0446fa1b055d5a55ba452"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exchanges",
+			"description": "",
+			"item": [
+				{
+					"name": "Get My Exchanges",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me/exchanges",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"exchanges"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Exchange",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me/exchanges/1526012438899",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"exchanges",
+								"1526012438899"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "Get User Followers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/users/ee8c4685e34c439bbaebb9957505f26a/followers",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"users",
+								"ee8c4685e34c439bbaebb9957505f26a",
+								"followers"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get ME",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"readState\":1,\n\t\"msgTs\": [1527289896736]\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/users/03a4f558cd9f464e8c809238c33fa4e5",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"users",
+								"03a4f558cd9f464e8c809238c33fa4e5"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update ME",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"screenName\":\"David T\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feed",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Home Feed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me/feeds/home/items?visibility=1",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"feeds",
+								"home",
+								"items"
+							],
+							"query": [
+								{
+									"key": "visibility",
+									"value": "1",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Home Feed Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"visibility\": 1\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/me/feeds/home/items/0f6e7f5033c44094b82ab98c11c0df32",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"feeds",
+								"home",
+								"items",
+								"0f6e7f5033c44094b82ab98c11c0df32"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Offer",
+			"description": "",
+			"item": [
+				{
+					"name": "Create OfferItem",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"This is an offer item with a photo\",\n\t\"coverAssetId\": \"38ff7f676914434b89eb1b5e933aca90\",\n\t\"condition\": \"new\",\n\t\"categoryId\": \"antiques\"\n}"
+						},
+						"url": {
+							"raw": "https://{{gs_host}}/me/offers/1521042476438/items",
+							"protocol": "https",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"offers",
+								"1521042476438",
+								"items"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Simple Offer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"body\": \"this is an Offer\",\n\n    \"items\": [\n        {\n            \"seq\": 1,\n       \n            \"description\": \"item 3\",\n            \"condition\": \"new\",\n            \"availability\": \"gone\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n            \"seq\": 2,\n \n            \"description\": \"this is an item\",\n            \"condition\": \"new\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n            \"seq\": 3,\n\n            \"description\": \"this is an item 4\",\n            \"condition\": \"new\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n            \"seq\": 4,\n            \"description\": \"item 2\",\n            \"condition\": \"new\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n            \"seq\": 5,\n \n            \"description\": \"item 5\",\n            \"condition\": \"new\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },        \n        {\n            \"description\": \"item 6\",\n            \"condition\": \"new\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{gs_host}}/me/offers/",
+							"protocol": "https",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"offers",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Offer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"body\": \"this is an Offer\",\n\n    \"items\": [\n        {\n            \"seq\": 1,\n       \n            \"description\": \"item 3\",\n            \"condition\": \"new\",\n            \"availability\": \"gone\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n            \"seq\": 2,\n \n            \"description\": \"this is an item\",\n            \"condition\": \"new\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n            \"seq\": 3,\n\n            \"description\": \"this is an item 4\",\n            \"condition\": \"new\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n            \"seq\": 4,\n            \"description\": \"item 2\",\n            \"condition\": \"new\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },\n        {\n            \"seq\": 5,\n \n            \"description\": \"item 5\",\n            \"condition\": \"new\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        },        \n        {\n            \"description\": \"item 6\",\n            \"condition\": \"new\",\n            \"availability\": \"available\",\n            \"categoryId\": \"antiques\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{gs_host}}/me/offers/1523592269926",
+							"protocol": "https",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"me",
+								"offers",
+								"1523592269926"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Assets",
+			"description": "",
+			"item": [
+				{
+					"name": "Init Upload",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"contentType\":\"image/jpg\",\n\t\"contentLength\": \"50\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/assets",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"assets"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Asset Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/assets/d1218dc75e884be6b3bb1a0870ffc833/data",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"assets",
+								"d1218dc75e884be6b3bb1a0870ffc833",
+								"data"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Upload",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"state\":\"complete\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/assets/446d79fe44344196ab151f979f589b42",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"assets",
+								"446d79fe44344196ab151f979f589b42"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "98d2418d-a03f-467d-8873-42b89449d407",
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{gs_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"\",\n\t\"body\": \"this is a registry\"\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{gs_host}}/categories",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{gs_host}}"
+							],
+							"path": [
+								"categories"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get App Config",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "98d2418d-a03f-467d-8873-42b89449d407",
+						"type": "text/javascript",
+						"exec": [
+							"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-GS-DEVICE-PLATFORM",
+						"value": "ios",
+						"disabled": true
+					},
+					{
+						"key": "X-GS-APP-VERSION",
+						"value": "2",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"body\": \"this is a registry\"\n}"
+				},
+				"url": {
+					"raw": "{{scheme}}://{{gs_host}}/config?appVersion=1.0.2&devicePlatform=ios",
+					"protocol": "{{scheme}}",
+					"host": [
+						"{{gs_host}}"
+					],
+					"path": [
+						"config"
+					],
+					"query": [
+						{
+							"key": "appVersion",
+							"value": "1.0.2",
+							"equals": true
+						},
+						{
+							"key": "devicePlatform",
+							"value": "ios",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Register Endpoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "98d2418d-a03f-467d-8873-42b89449d407",
+						"type": "text/javascript",
+						"exec": [
+							"postman.setEnvironmentVariable(\"last_registry_ts\", JSON.parse(responseBody).ts)"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJkZXYuYXBpLnJlZ2l2LmNvbSIsImV4cCI6MTUyNjc1MzcyMywiaWF0IjoxNTI2NjY5MTIzLCJpc3MiOiJkZXYuYXBpLnJlZ2l2LmNvbSIsImp0aSI6IjViNjEzZjZjOTFiNDQ2Yjc5NDE1YzYwNWNhOThkZWU5Iiwicm9sIjpbXSwic3ViIjoiNmU3YmYyYzQyNDUzNDg5NWI2NDY3MWU5N2IzZTYwMTIifQ.foaWP6hOL5lW0YE3GA5xoqYV70lNpq-GP9jCBood0Q8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"endpoint\": {\n\t  \"installId\": \"1\",\n      \"appVer\": \"1\",\n      \"os\": \"ios\",\n      \"osVer\": \"1\",\n      \"manufacturer\": \"1\",\n      \"model\": \"1\"\n\t}, \n\t\"token\": \"token\"\n}"
+				},
+				"url": {
+					"raw": "{{scheme}}://{{gs_host}}/me/endpoints",
+					"protocol": "{{scheme}}",
+					"host": [
+						"{{gs_host}}"
+					],
+					"path": [
+						"me",
+						"endpoints"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
